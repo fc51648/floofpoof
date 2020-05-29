@@ -54,7 +54,7 @@ def list_stages(request,sub_id=None):
             context['group'] = group
        
     if request.method == 'POST' and request.POST.get('submission'):
-        path = str(request.POST.get('submission')) + "_" + str(context['group'].id)
+        path = str(request.POST.get('submission')) + "_" + str(context['group'].id) + ".zip"
         file_path = os.path.join(settings.MEDIA_ROOT, path)
         if os.path.exists(file_path):
             with open(file_path, 'rb') as fh:
@@ -63,10 +63,15 @@ def list_stages(request,sub_id=None):
                 return response
     
     elif request.method == 'POST' and request.user.is_student and request.FILES['myfile']:
+        path = str(request.POST.get('stage')) + "_" + str(context['group'].id) + ".zip"
+        file_path = os.path.join(settings.MEDIA_ROOT, path)
         
+        if os.path.exists(file_path):
+            os.remove(file_path)
+
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
-        filename = fs.save(str(request.POST.get('stage')) + "_" + str(context['group'].id), myfile)
+        filename = fs.save(str(request.POST.get('stage')) + "_" + str(context['group'].id) + ".zip", myfile)
 
     elif request.method == "POST":
         stage = Stage(name=request.POST.get('name'), description=request.POST.get('description'), deadline=request.POST.get('deadline'))
@@ -101,7 +106,7 @@ def this_group(request,group_id=None):
     stages = Stage.objects.filter(subject=group.subject)
     context['stages'] = stages
     if request.method == 'POST' and request.POST.get('submission'):
-        path = str(request.POST.get('submission')) + "_" + str(context['group'].id)
+        path = str(request.POST.get('submission')) + "_" + str(context['group'].id) + ".zip"
         file_path = os.path.join(settings.MEDIA_ROOT, path)
         if os.path.exists(file_path):
             with open(file_path, 'rb') as fh:

@@ -198,8 +198,7 @@ def group_files(request,group_id=None):
     context['group'] = group
        
     if request.method == 'POST' and request.POST.get('submission'):
-        user = User.objects.get(id=request.POST.get('submission'))
-        path = "student_files"+"/"+"mgf" + "_" + str(context['group'].id) + "_" + str(request.POST.get('submission')+"/"+user.uploaded_file.name)
+        path = "mgf" + "_" + str(context['group'].id) + "_" + str(request.POST.get('submission')) + ".zip"
         file_path = os.path.join(settings.MEDIA_ROOT, path)
         if os.path.exists(file_path):
             with open(file_path, 'rb') as fh:
@@ -208,9 +207,15 @@ def group_files(request,group_id=None):
                 return response
     
     elif request.method == 'POST' and request.FILES['myfile']:
+        path = "mgf" + "_" + str(context['group'].id) + "_" + str(request.POST.get('upload')) + ".zip"
+        file_path = os.path.join(settings.MEDIA_ROOT, path)
+        
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
-        filename = fs.save("mgf" + "_" + str(context['group'].id) + "_" + str(request.POST.get('upload')), myfile)
+        filename = fs.save("mgf" + "_" + str(context['group'].id) + "_" + str(request.POST.get('upload')) + ".zip", myfile)
 
     return render(request, 'mygroup/group-files.html', context)
     
