@@ -389,6 +389,24 @@
 #rules_form{
     border-radius: 20px;
     padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#teacher_create_stages_container{
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+}
+
+#teacher_new_feedback_container{
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    padding-top: 15px;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 15px;
