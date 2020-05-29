@@ -11,21 +11,21 @@
 <div class="container">
     <div class="row text-left">
         <div class="col-lg-1">
-            <a id="link_nav" class="text-center btn btn-block btn-outline-dark" href="{% url 'this-group' group.id %}"> Back</a>
+            <a id="link_nav_back" class="text-center btn btn-block " href="{% url 'this-group' group.id %}"> Back</a>
         </div>
     </div>
 </div>
 
 <div class="container">
     <div class="row text-center">
-        <div class="col-lg-8 offset-lg-2">
-            <div class="border border-success">
+        <div class="col-lg-8 offset-lg-2" id="teacher_new_feedback_container">
+            <div class="border border-success new_feedback">
                 <p>Dar feedback sobre esta submissão</p>
                 <div>
                     <form method="POST" action="{% url 'new-feedback' stage.id group.id %}">
                         {% csrf_token %}
-                        <label>Descrição</label>
-                        <input  type='text' name="description" >
+                        <label>Descrição:</label>
+                        <input  class="form-control" type='text' name="description" autocomplete="off" >
                         <!-- <textarea  class="form-control rounded-0" type='text' name="description" ></textarea> -->
                         <br>
                         <input class="btn btn-success" type="submit" value="Dar feedback">

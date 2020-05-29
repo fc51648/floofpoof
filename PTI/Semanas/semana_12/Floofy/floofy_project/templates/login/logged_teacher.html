@@ -8,24 +8,25 @@
         <div class="col-lg-10 offset-lg-1">
            <h1 class="text-center" id="area_student_title">Area de professor</h1>
            <!-- <h1 class="text-center" id="area_student_title">Area de professor - {{ user.firstname }} {{ user.surname}}</h1> -->
+        <br
         </div>
     </div>
 </div>
-    <div class="row"> 
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 offset-lg-4">
+    <div class="row centered"> 
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 offset-lg-4 rrr" id="tab_link">
             <br>
 
-            <a  id="link_nav" class="text-center btn btn-block btn-outline-dark" href="{% url 'select-subject-page' %}">Cadeiras</a>
+            <a  id="link_nav" class="text-center btn btn-block" href="{% url 'select-subject-page' %}">Cadeiras</a>
             <br>
-            <a id="link_nav" class="text-center btn btn-block btn-outline-dark" href="{% url 'select-forum-subject' %}">Fóruns</a>
+            <a id="link_nav" class="text-center btn btn-block" href="{% url 'select-forum-subject' %}">Fóruns</a>
             <br>
-            <a id="link_nav" class="text-center btn btn-block btn-outline-dark" href="{% url 'select-subject' %}">Grupos</a> 
+            <a id="link_nav" class="text-center btn btn-block" href="{% url 'select-subject' %}">Grupos</a> 
             <br>
-            <a id="link_nav" class="text-center btn btn-block btn-outline-dark" href="/chat">Mensagens</a>
+            <a id="link_nav" class="text-center btn btn-block" href="/chat">Mensagens</a>
             <br>
-            <a id="link_nav" class="text-center btn btn-block btn-outline-dark" href="{% url 'schedule' %}">Horário</a>
+            <a id="link_nav" class="text-center btn btn-block" href="{% url 'schedule' %}">Horário</a>
             <br>
-            <a id="link_nav" class="text-center btn btn-block  btn-outline-danger" href="{% url 'logout' %}">Log out</a>
+            <a id="link_nav_exit" class="text-center btn btn-block" href="{% url 'logout' %}">Log out</a>
                
         </div>
 </div>

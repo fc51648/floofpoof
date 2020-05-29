@@ -69,6 +69,7 @@
     border: 1px solid rgb(117, 116, 116);
     border-radius: 15px;
     background-color:rgb(211, 208, 208);
+    color: black;
 
 }
 #link_nav:hover{
@@ -78,11 +79,23 @@
 #link_nav_exit{
     border-radius: 15px;
     background-color: rgb(241, 184, 184);
+    color: black;
 }
 #link_nav_exit:hover{
     background-color: red;
     color: white;
     /* color: black; */
+}
+
+#link_nav_back{
+    border: 1px solid rgb(117, 116, 116);
+    border-radius: 15px;
+    background-color:rgb(211, 208, 208);
+    color: black;
+}
+#link_nav_back:hover{
+    background-color:rgb(146, 146, 146);
+    color: rgb(0, 0, 0);
 }
 
 
@@ -177,7 +190,7 @@
 
 #task_for_do{
     border-radius: 15px;
-    background-color:rgb(177, 174, 174);
+    background-color:rgb(201, 198, 198);
 
 }
 
@@ -216,12 +229,12 @@
 
 /* meetings.html */
 #bg_link{
-    background-color: rgb(173, 171, 171);
+    background-color: rgb(196, 193, 193);
     border-radius: 5px;
     color: black;
 }
 #bg_link:hover{
-    background-color: rgb(190, 188, 188);
+    background-color: rgb(214, 214, 214);
     text-decoration: underline;
 }
 
@@ -238,7 +251,7 @@
     border-radius: 20px;
 }
 #meetigs_list_container{
-    background-color:rgb(209, 205, 205);
+    background-color:rgb(151, 150, 150);
     border-radius: 10px;
     padding-left: 5px;
     padding-top: 10px;
@@ -310,4 +323,84 @@
 }
 #student{
     padding-left: 15px;
+}
+
+/* group */
+#create_group_container{
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#join_group_list_contaier{
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    height: 300px;
+    text-align: center;
+    justify-content: center;
+    overflow: auto;
+}
+#group_div_list{
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(219, 219, 219);
+}
+
+#group_div_list:hover{
+    background-color: rgb(189, 189, 189);
+}
+
+/* teacher */
+
+#list_groups_teacher{
+    background-color: rgb(228, 228, 228);
+    border: 1px solid black;
+    color: black;
+    border-radius: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+#list_groups_teacher:hover{
+    background-color: rgb(182, 182, 182);
+    color: black;
+    text-decoration: underline;
+}
+
+#text_color{
+    color: black;
+}
+
+#teacher_container_rules{
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    padding-top: 10px;
+}
+
+#teacher_container_create_rules{
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+}
+#rules_form{
+    border-radius: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+}
+.new_feedback{
+    border-radius: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+#teacher_this_group_container{
+    border-radius: 20px;
+    background-color: rgb(238, 238, 238);
+    padding-bottom: 20px;
 }

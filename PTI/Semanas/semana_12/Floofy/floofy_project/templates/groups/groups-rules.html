@@ -12,26 +12,26 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-1 mr-auto">
-             <a class="text-center btn btn-block btn-outline-dark" href="{% url 'groups-subject' subject.id %}">Back</a>
+             <a id="link_nav_back" class="text-center btn btn-block" href="{% url 'groups-subject' subject.id %}">Back</a>
         </div>
     </div>
 </div>
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-lg-4 offset-lg-2 ">
+        <div class="col-lg-4 offset-lg-2 " id="teacher_container_rules">
             <p>Nº máximo de elementos por grupo: {{ subject.groups_max }}</p>
             <p>Prazo para formar grupo: {{ subject.groups_deadline }}</p>
             <p>Grupos abertos? {{ subject.groups_on }}</p>
         </div>
 
-            <div class="col-lg-4 offset-lg-2">
+            <div class="col-lg-4 offset-lg-2" id="teacher_container_create_rules">
                 <div id="rules_form" class="border border-success text-center">
                     <form method="POST" action="{% url 'groups-rules' subject.id %}">
                         {% csrf_token %}
                         <div class="text-center">
                             <label><h5>Nº máximo de elementos</h5></label>
-                            <input class="form-control" type='number' name="groups_max" min="1">
+                            <input class="form-control" type='number' name="groups_max" min="1" autocomplete="off">
                         </div>
                         <br>
                         <label>Prazo</label>
@@ -47,7 +47,7 @@
                         <br>
                         <br>
                         <div class="text-center">
-                            <input class="btn btn-succes" type="submit" value="Submit">
+                            <input class="btn btn-success" type="submit" value="Submit">
                         </div>
                         
                     </form>

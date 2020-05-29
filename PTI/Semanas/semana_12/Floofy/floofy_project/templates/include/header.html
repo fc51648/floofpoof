@@ -11,13 +11,13 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
- 
+        {% if user.is_active %}
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a id="header_icon_user" class="nav-link text-dark" href="#">{{ user.firstname }} {{ user.surname}}</a>
         </li>
           <li class="nav-item">
-            {% if user.is_active %}
+            
               {% if user.is_student %}
               <a id="link_home_header" class="text-center btn" href="{% url 'logged-student' %}"><svg class="bi bi-house" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>

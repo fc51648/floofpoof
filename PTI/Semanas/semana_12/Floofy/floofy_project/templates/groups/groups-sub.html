@@ -11,13 +11,13 @@
 <div class="container">
     <div class="row text-left">
         <div class="col-lg-1">
-             <a class="text-center btn btn-block btn-outline-dark" href="{% url 'select-subject' %}">Back</a>
+             <a id="link_nav_back" class="text-center btn btn-block" href="{% url 'select-subject' %}">Back</a>
         </div>
         <div class="col-lg-4 offset-lg-2">
             <a class="text-center btn btn-block btn-dark" href="{% url 'groups-rules' subject.id %}">Regras de grupos</a>
             
         </div>
-        <div class="col-lg-4 ">
+        <div class="col-lg-4">
             <a class="text-center btn btn-block btn-dark" href="{% url 'stages' subject.id %}">Etapas do projeto</a>
         </div>
     </div>
@@ -26,13 +26,15 @@
 
 <div class="container">
     <div class="row centered">
-        <div class="col-lg-3 offset-lg-2">
-            <div id="list_groups">
-                {% for group in groups %}
-                <a class="btn btn-block" href="{% url 'this-group' group.id %}">Grupo {{ group.name }}</p>
-               {% endfor %}   
-            </div> 
+        
+            {% for group in groups %}
+            <div class="col-lg-3 offset-lg-2" id="list_groups_teacher">
+                 
+                <a id="text_color" class="btn btn-block" href="{% url 'this-group' group.id %}">Grupo {{ group.name }}</p>
+            
         </div>
+            {% endfor %}   
+       
     </div>
 </div>
   

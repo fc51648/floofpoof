@@ -11,13 +11,13 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-1 mr-auto">
-            <a id="link_nav" class="text-center btn btn-block btn-outline-dark" href="{% url 'groups-subject' group.subject.id %}">Back</a>
+            <a id="link_nav_back" class="text-center btn btn-block" href="{% url 'groups-subject' group.subject.id %}">Back</a>
         </div> 
     </div>
 </div>
 <div class="container">
     <div class="row centered"> 
-        <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-4 col-lg-4  offset-lg-4 offset-md-4">
+        <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-4 col-lg-4  offset-lg-4 offset-md-4" id="teacher_this_group_container">
             
         
                 <br>
@@ -37,11 +37,14 @@
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <input type="hidden" name="submission" value={{ stage.id|stringformat:"i" }}>
-                        <button type="submit">Abrir projeto submetido</button>
+                        <div class="text-center">
+                            <button class="btn btn-success" type="submit">Abrir projeto submetido</button>
+                        </div>
                     </form>
                     <br>
-                    <a class="btn btn-primary" href="{% url 'new-feedback' stage.id group.id %}">Dar feedback</a>
-        
+                    <div class="text-center">
+                        <a class="btn btn-primary" href="{% url 'new-feedback' stage.id group.id %}">Dar feedback</a>
+                    </div>        
                 {% endfor %}
 
          </div>

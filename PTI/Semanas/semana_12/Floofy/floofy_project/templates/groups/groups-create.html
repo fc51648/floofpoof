@@ -6,7 +6,7 @@
     <div class="row centered">
         <div class="col-lg-10 offset-lg-1 text-center">
            <!-- <h1 class="text-center" id="area_student_title">{{ user.firstname }} {{ user.surname}} </h1><br> -->
-           <h1 class="text-center" id="area_student_title">>Criar grupo</h1>
+           <h1 class="text-center" id="area_student_title">Criar grupo</h1>
         </div>
     </div>
 </div>
@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row text-left">
         <div class="col-lg-1">
-             <a class="text-center btn btn-block btn-outline-dark" href="{% url 'groups-join' subject.id %}">Back</a>
+             <a id="link_nav_back" class="text-center btn btn-block" href="{% url 'groups-join' subject.id %}">Back</a>
         </div>
     </div>
 </div>
@@ -22,11 +22,11 @@
 <br>
 <div class="container">
     <div class="row"> 
-        <div class=" col-lg-4  offset-lg-4" >
+        <div class=" col-lg-4  offset-lg-4" id="create_group_container">
             <form class="text-center" method="POST" action="{% url 'groups-create' subject.id %}">
                 {% csrf_token %}
                 <label>Nome do grupo:</label>
-                <input class="form-control" type='text' required="" name="group_name">
+                <input class="form-control" type='text' required="" name="group_name"  autocomplete="off">
                 <br>
                 <input class="btn btn-success" type="submit" value="Criar">
             </form>

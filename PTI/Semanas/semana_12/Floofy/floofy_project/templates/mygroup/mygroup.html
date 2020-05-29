@@ -7,14 +7,14 @@
     <div class="row centered">
         <div class="col-lg-10 offset-lg-1 text-center">
            <!-- <h1 class="text-center" id="area_student_title">{{ user.firstname }} {{ user.surname}} </h1><br> -->
-           <h1 class="text-center">Area de Grupo - {{ group.name }} de {{ group.subject }}</h1>
+           <h1 class="text-center" id="area_student_title">Area de Grupo - {{ group.name }} de {{ group.subject }}</h1>
         </div>
     </div>
 </div>
 <div class="container">
     <div class="row text-left">
         <div class="col-lg-1">
-            <a class="text-center btn btn-block btn-outline-dark" href="{% url 'select-subject' %}">Back</a>
+            <a id="link_nav_back" class="text-center btn btn-block " href="{% url 'select-subject' %}">Back</a>
         </div>
     </div>
 </div>

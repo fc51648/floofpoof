@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row text-left">
         <div class="col-lg-1">
-            <a id="link_nav" class="text-center btn btn-block btn-outline-dark"  href="{% url 'groups-subject' subject.id %}"> Back</a>
+            <a id="link_nav" class="text-center btn btn-block"  href="{% url 'groups-subject' subject.id %}"> Back</a>
         </div>
     </div>
 </div>
@@ -24,7 +24,30 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 offset-lg-3" >
-
+            {% if user.is_teacher %}
+            <div class="col-lg-6 offset-lg-3" id="teacher_create_stages_container" >
+                <p class="text-center">Criar nova etapa</p>
+                <div>
+                    <form method="POST" action="{% url 'stages' subject.id %}">
+                        {% csrf_token %}
+                        <label>Nome</label>
+                        <input class="form-control" type='text' name="name" autocomplete="off">
+                        <br>
+                        <label>Descrição</label>
+                        <input class="form-control" type='text' name="description" autocomplete="off">
+                        <br>
+                        <label>Prazo</label>
+                        <input class="form-control" type='date' name="deadline" >
+                        <br>
+                        <div class="text-center">
+                            <input class="btn btn-success" type="submit" value="Criar etapa">
+                        </div>
+                    </form>
+                </div>
+            </div> 
+            <br>
+            
+            {% endif %}
             {% for stage in stages %}
                 <div id="stages_container">
 
@@ -56,27 +79,6 @@
                 <br>
             {% endfor %}
         </div>
-            {% if user.is_teacher %}
-            <div class="col-lg-6 offset-lg-3">
-                <p>Criar nova etapa</p>
-                <div>
-                    <form method="POST" action="{% url 'stages' subject.id %}">
-                        {% csrf_token %}
-                        <label>Nome</label>
-                        <input type='text' name="name">
-                        <br>
-                        <label>Descrição</label>
-                        <input type='text' name="description">
-                        <br>
-                        <label>Prazo</label>
-                        <input type='date' name="deadline">
-                        <br>
-                        <input type="submit" value="Criar etapa">
-                    </form>
-                </div>
-            </div> 
-            
-            {% endif %}
         
     </div>
 </div>
