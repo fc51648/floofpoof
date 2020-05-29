@@ -8,6 +8,7 @@ class Degree(models.Model):
     name = models.CharField(unique=True,max_length=50)
     grade = models.IntegerField(default=1)
     years = models.IntegerField(default=3)
+    code = models.CharField(max_length=4,blank=True,null=True,unique=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -22,7 +23,7 @@ class Year(models.Model):
 
 class Subject(models.Model):
     name = models.CharField(max_length=50)
-    code = models.CharField(max_length=4,blank=True,null=True)
+    code = models.CharField(max_length=4,blank=True,null=True,unique=True)
     groups_max = models.IntegerField(default=7)
     groups_deadline = models.DateField(blank=True,null=True)
     groups_on = models.BooleanField(default=False)

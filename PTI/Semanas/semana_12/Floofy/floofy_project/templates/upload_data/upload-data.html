@@ -3,16 +3,17 @@
 
 {% block content %}
 
-<h1>Upload de dados de alunos</h1>
+<h1>Upload de dados de {{ subtext }}</h1>
 <div>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="myfile">
         <button type="submit">Upload</button>
     </form>
+    <p>{{guide}}</p>
     
-    {% if students_saved %}
-    <p>{{ students_saved }}</p>
+    {% if data_saved %}
+    <p>{{ data_saved }}</p>
     {% endif %}
 
     <br>

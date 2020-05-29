@@ -7,15 +7,31 @@
 <body>
 <h1>Area de upload de dados - {{ user }} </h1>
 <br>
-<a href="{% url 'upload-students' %}">Alunos</a>
+<a href="#">Alunos</a>
 <br>
-<a href="#">Professores</a>
+<a href="{% url 'upload-years' %}">Anos letivos</a>
 <br>
-<a href="#">Grupos</a>
+<a href="{% url 'upload-subjects' %}">Cadeiras</a>
+<br>
+<a href="{% url 'upload-degrees' %}">Cursos</a>
 <br>
 <a href="#">Etapas</a>
 <br>
 <a href="#">Feedback</a>
+<br>
+<a href="#">Grupos</a>
+<br>
+<a href="#">Pontuações</a>
+<br>
+<a href="#">Posts</a>
+<br>
+<a href="#">Professores</a>
+<br>
+<a href="#">Reuniões</a>
+<br>
+<a href="#">Tarefas</a>
+<br>
+<a href="{% url 'upload-blocks' %}">Turnos</a>
 <br>
 </body>    
 </html>
