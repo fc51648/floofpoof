@@ -184,7 +184,7 @@ class Stage(models.Model):
     deadline = models.DateField(blank=True, null=True)
 
     def __str__(self):
-        return f'Etapa {self.number} da cadeira {self.subject}'
+        return f'Etapa {self.id} da cadeira {self.subject}'
 
 class Meeting(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE,blank=True, null=True)
