@@ -15,7 +15,11 @@
 <br><br>
 <div >
     <div class="container " >
-        <div class="row centered" > 
+        <div class="row centered" >
+            <div class="col-lg-1 text-left">
+                <a id="link_nav_back" class="text-center btn btn-block" href="{% url 'select-subject-page' %}">Back</a><br>
+            </div> 
+            
             <div class=" col-lg-4  offset-lg-1 " id="">
                     <a id="" class="text-center btn btn-block btn-outline-dark" href="{% url 'forum' subject.id %}">Fórum</a>
                     <br>
@@ -31,19 +35,19 @@
         </div>   
     </div>
 </div>
-<div class="container">
+<!-- <div class="container">
     <div class="row text-left">
         <div class="col-lg-1">
             <a id="link_nav_back" class="text-center btn btn-block" href="{% url 'select-subject-page' %}">Back</a>
         </div>
     </div>
-</div>
+</div> -->
 <br>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-lg-3 " id="users_container">
-            <div><p>Curso: {{ subject.degree.name }}</p>
+        <div class="col-lg-3 offset-lg-1" id="users_container">
+            <div><p>Curso: <br><b>{{ subject.degree.name }}</b></p>
             </div>
             <hr>
             <div id="teacher_list">
@@ -61,7 +65,7 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="col-lg-7 offset-lg-2">
+        <div class="col-lg-5 offset-lg-1 text-center">
             <p>Informações da cadeira:</p>
         </div>
 

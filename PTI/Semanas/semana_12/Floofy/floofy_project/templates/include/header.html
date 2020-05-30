@@ -1,6 +1,6 @@
 <header>
   <div class="container">
-    <nav class="navbar navbar-expand-lg header_nav ">
+    <nav class="navbar navbar-expand-sm header_nav navbar-light">
       {% if user.is_student %}
       <a  class="navbar-brand" href="{% url 'logged-student' %}">Floofy</a>
       {% else %}

@@ -5,7 +5,7 @@
     <div class="row centered">
         <div class="col-lg-10 offset-lg-1">
         <!-- <h1 class="text-center" id="area_student_title">Area de estudante : {{ user.firstname }} {{ user.surname}} <br> -->
-            <h1 class="text-center" id="area_student_title"> Disciplina: {{ subject.name }}</h1>
+            <h1 class="text-center" id="area_student_title"> Disciplina: {{ subject.name }}</h1><br>
         </div>
     </div>
 </div>
@@ -16,10 +16,10 @@
         </div>
     </div>
 </div>
-   
+  <br> 
 <div class="container">
     <div class="row centered">
-        <div class="col-lg-6 offset-lg-3">
+        <div class="col-lg-8 offset-lg-2">
             <div class="content-section " id="forum_container_delet_post">
                 <form method="POST">
                     {% csrf_token %}

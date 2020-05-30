@@ -4,7 +4,7 @@
     <div class="row centered">
         <div class="col-lg-10 offset-lg-1">
         <!-- <h1 class="text-center" id="area_student_title">Area de estudante : {{ user.firstname }} {{ user.surname}} <br> -->
-            <h1 class="text-center" id="area_student_title"> Disciplina: {{ subject.name }}</h1>
+            <h1 class="text-center" id="area_student_title"> Disciplina: {{ subject.name }}</h1><br>
         </div>
     </div>
 </div>
@@ -12,13 +12,13 @@
 <div class="container">
     <div class="row text-left">
         <div class="col-lg-1">
-            <a id="link_nav_back" class="text-center btn btn-block " href="{% url 'select-forum-subject' %}">Back</a>
+            <a id="link_nav_back" class="text-center btn btn-block " href="{% url 'select-forum-subject' %}">Back</a><br>
         </div>
     </div>
 </div>
 <div class="container">
     <div class="row centered">
-        <div class="col-lg-3 offset-lg-4">
+        <div class="col-lg-3 offset-lg-4 col-md-4 offset-md-4">
             <a id="link_nav" class="text-center btn btn-block btn-outline-success" href="{% url 'post-create' subject.id %}">Novo post<i style="margin-left: 7px; color: currentColor; font-size: 15px; " class="fas fa-plus"></i></a>
         </div>
     </div>
@@ -29,7 +29,7 @@
         <thead  id="forum_header_table">
             <tr>
                 <th scope="col">Título</th>
-                <th scope="col">Autort</th>
+                <th scope="col">Autor</th>
                 <th scope="col">Conteúdo</th>
                 <th scope="col">Data</th>
               </tr>

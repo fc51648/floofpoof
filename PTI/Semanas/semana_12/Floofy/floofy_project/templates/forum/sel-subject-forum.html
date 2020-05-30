@@ -10,9 +10,10 @@
         </div>
     </div>
 </div>
+<br>
 <div class="container">
     <div class="row text-left">
-        <div class="col-lg-1">
+        <div class="col-lg-2 col-md-3 ">
             {% if user.is_student %}
                 <a id="link_nav_back" class="text-center btn btn-block" href="{% url 'logged-student' %}">Back</a>
                 {% else %}
@@ -25,7 +26,7 @@
 <br>
 <div class="container">
     <div class="row centered"> 
-        <div class=" col-lg-4  offset-lg-4" id="forum_tab_link">
+        <div class=" col-lg-4  offset-lg-4 col-md-4 offset-md-4" id="forum_tab_link">
                 {% for subject in user.current_subjects %}
                 <br>
                 <a id="link_nav_forum" class="text-center btn btn-block btn-outline-dark" href="{% url 'forum' subject.id %}">{{ subject.name }}</a>
