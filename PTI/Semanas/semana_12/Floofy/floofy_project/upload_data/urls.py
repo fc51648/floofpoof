@@ -14,4 +14,5 @@ urlpatterns = [
     path('meetings/', views.upload_meetings, name='upload-meetings'),
     path('feedback/', views.upload_feedback, name='upload-feedback'),
     path('', views.upload_area, name='upload-area'),
+    path('help/', views.help_area, name='help-area'),
 ]
