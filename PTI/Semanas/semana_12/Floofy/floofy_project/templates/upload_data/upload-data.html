@@ -2,23 +2,41 @@
 {% load static %}
 
 {% block content %}
-
-<h1>Upload de dados de {{ subtext }}</h1>
-<div>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="myfile">
-        <button type="submit">Upload</button>
-    </form>
-    <p>{{guide}}</p>
-    
-    {% if data_saved %}
-    <p>{{ data_saved }}</p>
-    {% endif %}
-
-    <br>
-    <br>
-    <a href="{% url 'upload-area' %}">Back</a>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Upload de dados de {{ subtext }}</h1>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-lg-1 text-left">
+                <a class="btn btn-block btn-outline-dark" href="{% url 'upload-area' %}">Back</a>
+            </div>
+        </div>
+</div>  
+<br> 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3 text-left">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input class="form-control" type="file" name="myfile">
+                <br>
+                <div class="text-center">
+                    <button class="btn btn-success" type="submit">Upload</button>
+                </div>
+            </form>
+            <br>
+            <p>{{guide}}</p>
+            <br>
+            {% if data_saved %}
+            <p>{{ data_saved }}</p>
+            {% endif %}
+        </div>
+    </div>
 </div>
+        
 
+
+ 
 {% endblock %}

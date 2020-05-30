@@ -1,33 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>    
-</title>    
-</head>
-<body>
-<h1>Area de upload de dados - {{ user }} </h1>
-<br>
-<a href="{% url 'upload-students' %}">Alunos</a>
-<br>
-<a href="{% url 'upload-years' %}">Anos letivos</a>
-<br>
-<a href="{% url 'upload-subjects' %}">Cadeiras</a>
-<br>
-<a href="{% url 'upload-degrees' %}">Cursos</a>
-<br>
-<a href="{% url 'upload-stages' %}">Etapas</a>
-<br>
-<a href="{% url 'upload-feedback' %}">Feedback</a>
-<br>
-<a href="{% url 'upload-groups' %}">Grupos</a>
-<br>
-<a href="{% url 'upload-teachers' %}">Professores</a>
-<br>
-<a href="{% url 'upload-meetings' %}">Reuniões</a>
-<br>
-<a href="{% url 'upload-tasks' %}">Tarefas</a>
-<br>
-<a href="{% url 'upload-blocks' %}">Turnos</a>
-<br>
-</body>    
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container" >
+    <div class="row">
+        <div class="col">
+            <h1>Area de upload de dados - {{ user }} </h1>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 offset-lg-4">
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-students' %}">Alunos</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-years' %}">Anos letivos</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-subjects' %}">Cadeiras</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-degrees' %}">Cursos</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-stages' %}">Etapas</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-feedback' %}">Feedback</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-groups' %}">Grupos</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-teachers' %}">Professores</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-meetings' %}">Reuniões</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-tasks' %}">Tarefas</a>
+            <br>
+            <a class="btn btn-block btn-outline-dark" href="{% url 'upload-blocks' %}">Turnos</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
