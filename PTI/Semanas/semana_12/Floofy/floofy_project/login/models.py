@@ -3,6 +3,9 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 from django.core.files.storage import FileSystemStorage
+from datetime import date
+
+
 
 class Degree(models.Model):
     name = models.CharField(unique=True,max_length=50)
@@ -89,9 +92,9 @@ class User(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
-    subjects = models.ManyToManyField(Subject, null=True, blank=True)
-    blocks = models.ManyToManyField(Block, null=True, blank=True)
-    degree = models.ManyToManyField(Degree,blank=True,null=True)
+    subjects = models.ManyToManyField(Subject, blank=True)
+    blocks = models.ManyToManyField(Block, blank=True)
+    degree = models.ManyToManyField(Degree,blank=True)
     firstname = models.CharField(blank=True, null=True, max_length=20)
     surname = models.CharField(blank=True, null=True, max_length=20)
     #in_date = models.DateField(blank=True, null=True)
@@ -124,6 +127,25 @@ class User(AbstractBaseUser):
         for score in range(num):
             avg += float(scores[score].value)
         return avg/num
+
+    def current_subjects(self):
+        today = date.today()
+        current = []
+        for subject in self.subjects.all():
+            y = subject.year
+            if y.beginning <= today <= y.end:
+                current.append(subject)
+        return current
+    
+    def current_blocks(self):
+        today = date.today()
+        current = []
+        for subject in self.subjects.all():
+            y = subject.year
+            if y.beginning <= today <= y.end:
+                current.append(subject)
+        
+
 
     @property
     def is_staff(self):
