@@ -6,6 +6,9 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from login.models import User, Group, Subject, Block
 from django.http import JsonResponse
 
+
+
+
 def is_student(user):
     return user.is_student
 
@@ -57,8 +60,9 @@ def schedule(request):
 def monday(request):
     blocks = []
     context = {}
-    for block in request.user.blocks.filter(day=2):
-        blocks.append(block)
+    for block in request.user.blocks.filter(day=2).order_by('From'):
+        if block.subject in request.user.current_subjects():
+            blocks.append(block)
     context['blocks'] = blocks
     context['day'] = "Segunda feira"
     return render(request, 'login/dayschedule.html', context)
@@ -66,8 +70,9 @@ def monday(request):
 def tuesday(request):
     blocks = []
     context = {}
-    for block in request.user.blocks.filter(day=3):
-        blocks.append(block)
+    for block in request.user.blocks.filter(day=3).order_by('From'):
+        if block.subject in request.user.current_subjects():
+            blocks.append(block)
     context['blocks'] = blocks
     context['day'] = "Terça feira"
     return render(request, 'login/dayschedule.html', context)
@@ -75,8 +80,9 @@ def tuesday(request):
 def wednesday(request):
     blocks = []
     context = {}
-    for block in request.user.blocks.filter(day=4):
-        blocks.append(block)
+    for block in request.user.blocks.filter(day=4).order_by('From'):
+        if block.subject in request.user.current_subjects():
+            blocks.append(block)
     context['blocks'] = blocks
     context['day'] = "Quarta feira"
     return render(request, 'login/dayschedule.html', context)
@@ -84,8 +90,9 @@ def wednesday(request):
 def thursday(request):
     blocks = []
     context = {}
-    for block in request.user.blocks.filter(day=5):
-        blocks.append(block)
+    for block in request.user.blocks.filter(day=5).order_by('From'):
+        if block.subject in request.user.current_subjects():
+            blocks.append(block)
     context['blocks'] = blocks
     context['day'] = "Quinta feira"
     return render(request, 'login/dayschedule.html', context)
@@ -93,8 +100,9 @@ def thursday(request):
 def friday(request):
     blocks = []
     context = {}
-    for block in request.user.blocks.filter(day=6):
-        blocks.append(block)
+    for block in request.user.blocks.filter(day=6).order_by('From'):
+        if block.subject in request.user.current_subjects():
+            blocks.append(block)
     context['blocks'] = blocks
     context['day'] = "Sexta feira"
     return render(request, 'login/dayschedule.html', context)
