@@ -7,7 +7,7 @@
     <div class="row centered">
         <div class="col-lg-10 offset-lg-1 text-center">
            <!-- <h1 class="text-center" id="area_student_title">{{ user.firstname }} {{ user.surname}} </h1><br> -->
-           <h1 class="text-center" id="area_student_title">Lista de grupos</h1>
+           <h1 class="text-center" id="area_student_title">Lista de grupos - {{ subject.name }}</h1>
         </div>
     </div>
 </div>
@@ -18,10 +18,13 @@
         </div>
     </div>
 </div>
+{% if subject.groups_on %}
 <div class="container">
     <div class="row ">
         <div class="col-lg-10 offset-lg-1 text-center">
             <p class="text-danger ">Ainda não tem grupo. Entre num grupo na lista abaixo, ou crie um novo.</p>
+            <p class="text-danger ">Tem até à data {{ subject.groups_deadline }} para formar grupo.</p>
+            <p class="text-danger ">O limite de pessoas é {{ subject.groups_max }} por grupo.</p>
         </div>
     </div>
 </div>
@@ -38,7 +41,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 offset-lg-3" id="join_group_list_contaier">
-            <h5>Escolhe um grupo</h5> 
+            <h5>Escolha um grupo</h5> 
             <hr>
 
 
@@ -77,7 +80,18 @@ $(document).ready(function(){
 
 
 </script>
+
+
+
+
 {% endblock %}
-
-
+{% else %}
+<div class="container">
+    <div class="row ">
+        <div class="col-lg-10 offset-lg-1 text-center">
+            <p class="text-danger ">A opção de grupos desta cadeira está fechada.</p>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
