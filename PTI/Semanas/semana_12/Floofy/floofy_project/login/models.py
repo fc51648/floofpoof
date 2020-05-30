@@ -32,6 +32,7 @@ class Subject(models.Model):
     groups_on = models.BooleanField(default=False)
     degree = models.ForeignKey(Degree,blank=True,null=True, on_delete=models.CASCADE)
     year = models.ForeignKey(Year,blank=True,null=True, on_delete=models.CASCADE)
+    description = models.CharField(max_length=500,blank=True,null=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -183,7 +184,7 @@ class Stage(models.Model):
     deadline = models.DateField(blank=True, null=True)
 
     def __str__(self):
-        return f'Etapa {self.number} da cadeira {self.subject}'
+        return f'Etapa {self.id} da cadeira {self.subject}'
 
 class Meeting(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE,blank=True, null=True)

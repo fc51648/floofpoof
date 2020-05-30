@@ -22,7 +22,7 @@ def is_admin(user):
 def upload_years(request):
     context = {}
     context['subtext'] = 'anos letivos'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: NOME;DATADEINICIO;DATADEFIM\nExemplo:"2020-2021;2020-09-15;2021-07-15"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:nome\nparam2:data de inicio\nparam3:data de fim'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -63,7 +63,7 @@ def upload_years(request):
 def upload_degrees(request):
     context = {}
     context['subtext'] = 'cursos'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: NOME;CICLO;ANOSDECURSO\nExemplo:"Tecnologias de Informação;1;3"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:nome\nparam2:ciclo(numero)\nparam3:anos de curso(numero)'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -107,7 +107,7 @@ def upload_degrees(request):
 def upload_subjects(request):
     context = {}
     context['subtext'] = 'cadeiras'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: NOME;CODIGO;MAXELEMENTOSPORGRUPO;PRAZOFORMARGRUPO;GRUPOSABERTOS;CURSO;ANOLETIVO\nExemplo:"Programação 1;PRO1;4;2020-09-30;True;IT;2020-2021"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:nome\nparam2:codigo\nparam3:numero máximo de elementos por grupo\nparam4:data limite para formar grupo\nparam5:grupos abertos (True ou False)\nparam6:codigo de curso\nparam7:nome de ano letivo'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -158,7 +158,7 @@ def upload_subjects(request):
 def upload_blocks(request):
     context = {}
     context['subtext'] = 'turnos'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: CODIGOCADEIRA;DIADASEMANA;HORAINICIO;HORAFIM;SALA\nExemplo: "PRO1;2;09:30:00;10:30:00;C.2.23"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:codigo de cadeira\nparam2:dia da semana(numero)\nparam3:hora de inicio(h:m:s)\nparam4:hora de fim(h:m:s)\nparam5:nome da sala'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -207,7 +207,7 @@ def upload_blocks(request):
 def upload_students(request):
     context = {}
     context['subtext'] = 'alunos'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: EMAIL;PASSWORD;DATANASCIMENTO;CADEIRAS;TURNOS;CURSOS;PRIMEIRONOME;ULTIMONOME\nExemplo: "andre@gmail.com;FculPass999;1998-07-07;PRO1-ASTI;1-2-3;IT-IT2;Andre;Mota"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:email\nparam2:password\nparam3:data de nascimento\nparam4:lista de códigos de cadeiras\nparam5:lista de ids de turnos/turmas\nparam6:lista de códigos de cursos\nparam7:primeiro nome\nparam8:ultimo nome'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -272,7 +272,7 @@ def upload_students(request):
 def upload_teachers(request):
     context = {}
     context['subtext'] = 'professores'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: EMAIL;PASSWORD;DATANASCIMENTO;CADEIRAS;TURNOS;CURSOS;PRIMEIRONOME;ULTIMONOME\nExemplo: "andre@gmail.com;FculPass999;1998-07-07;PRO1-ASTI;1-2-3;IT-IT2;Andre;Mota"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:email\nparam2:password\nparam3:data de nascimento\nparam4:lista de códigos de cadeiras\nparam5:lista de ids de turnos/turmas\nparam6:lista de códigos de cursos\nparam7:primeiro nome\nparam8:ultimo nome'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -337,7 +337,7 @@ def upload_teachers(request):
 def upload_groups(request):
     context = {}
     context['subtext'] = 'grupos'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: CODIGOCADEIRA;MEMBROSDOGRUPO;NOME\nExemplo: "PRO1;1-2-3;Novogrupoteste"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:codigo da cadeira\nparam2:lista de emails de elementos do grupo\nparam3:nome do grupo'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -352,7 +352,7 @@ def upload_groups(request):
                     s = Group(subject=Subject.objects.get(code=Code),name=line[2].strip())
                     s.save()
                     for member in line[1].split("-"):
-                        m = User.objects.get(pk=int(member))
+                        m = User.objects.get(email=str(member))
                         s.members.add(m)
                     s.save()
 
@@ -388,7 +388,7 @@ def upload_groups(request):
 def upload_tasks(request):
     context = {}
     context['subtext'] = 'tarefas'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: IDGRUPO;DONODATAREFA;NOME;DESCRIÇÃO;HORAS_DEDICADAS;MIN_DEDICADOS;PRAZO;CONCLUIDA\nExemplo: "1;2;TAREFAMA;MAMA;20;2;2020-08-09;True"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:id de grupo\nparam2:email de dono da tarefa\nparam3:nome da tarefa\nparam4:descrição\nparam5:horas dedicadas (numero)\nparam6:minutos dedicados(numero)\nparam7:prazo (data)\nparam8:concluida (True ou False)'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -401,7 +401,7 @@ def upload_tasks(request):
                     line = line.split(';')
                     gid = line[0]
                     oid = line[1]
-                    o = User.objects.get(pk=oid)
+                    o = User.objects.get(email=oid)
                     s = Task(group=g,owner=o,name=line[2],description=line[3],hours_dedicated=int(line[4]),minutes_dedicated=int(line[5]),deadline=line[6],finished=line[7].strip())
                     s.save()
 
@@ -438,7 +438,7 @@ def upload_tasks(request):
 def upload_stages(request):
     context = {}
     context['subtext'] = 'etapas'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: CODIGOCADEIRA;NUMERO;NOME;DESCRIÇÃO;PRAZO\nExemplo: "ASTI;99;ESTAGIO1;muitascoisasparafazer;2020-08-09"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:codigo da cadeira\nparam2:numero da etapa\nparam3:nome\nparam4:descrição\nparam5:prazo'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -486,7 +486,7 @@ def upload_stages(request):
 def upload_meetings(request):
     context = {}
     context['subtext'] = 'reuniões de grupo'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: IDGRUPO;IDOWNER;IDs_de_quem_vai;IDs_de_quem_não_vai;NOME;LOCAL;DESCRIÇÃO;DATA\nExemplo: "8;1;1-2-3;4;reuniaodeteste;Via zoom;temosquetrabalhar;2020-05-05"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:id de grupo\nparam2:email de dono da reunião\nparam3:lista de emails dos que vão\nparam4:lista de emails dos que não vão\nparam5:nome\nparam6:local\nparam7:descrição\nparam8:data'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -501,16 +501,16 @@ def upload_meetings(request):
                     g = Group.objects.get(pk = idg)
                     ido = str(line[1])
                    
-                    o = User.objects.get(pk = ido)
+                    o = User.objects.get(email = ido)
                     meet = Meeting(group=g,owner=o,name=line[4],location=line[5],description=line[6],date=line[7].strip())
                     meet.save()
                     for member in line[2].split("-"):
-                        m = User.objects.get(pk=int(member))
+                        m = User.objects.get(email=str(member))
                         meet.willgo.add(m)
                     
                     for member in line[3].split("-"):
                         
-                        m = User.objects.get(pk=int(member))
+                        m = User.objects.get(email=str(member))
                         meet.wontgo.add(m)
                     meet.save()
 
@@ -546,7 +546,7 @@ def upload_meetings(request):
 def upload_feedback(request):
     context = {}
     context['subtext'] = 'comentários e feedback de professores'
-    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nEstrutura das linhas: IDGRUPO;IDOWNER;IDETAPA;DESCRIÇÃO\nExemplo: "8;2;3;Etapanova"'
+    context['guide'] = 'Envie um ficheiro do tipo .TXT ou .CSV\nParâmetros:\nparam1:id de grupo\nparam2:email de professor\nparam3:id da etapa\nparam4:descrição'
     if request.method == 'POST' and request.FILES['myfile']:
         try:
             myfile = request.FILES['myfile']
@@ -560,7 +560,7 @@ def upload_feedback(request):
                     idg = str(line[0])
                     g = Group.objects.get(pk = idg)
                     ido = str(line[1])
-                    o = User.objects.get(pk = ido)
+                    o = User.objects.get(email = ido)
                     ids = str(line[2])
                     s = Stage.objects.get(pk = ids)
                     f = Feedback(group=g,owner=o,stage=s,description=line[3])
@@ -596,3 +596,8 @@ def upload_feedback(request):
 @user_passes_test(is_admin, login_url="/")
 def upload_area(request):
     return render(request, 'upload_data/upload-area.html')
+
+@login_required(login_url="/")
+@user_passes_test(is_admin, login_url="/")
+def help_area(request):
+    return render(request, 'upload_data/help_area.html')
