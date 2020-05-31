@@ -50,6 +50,7 @@
                 <p>Docentes:</p>
                 {% for teacher in teachers %}
                     <p id="teacher">{{ teacher }}</p>
+                    <p>{{ teacher.email }}</p>
                 {% endfor %}
             </div>
             <hr>

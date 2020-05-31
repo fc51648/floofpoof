@@ -137,6 +137,27 @@ class User(AbstractBaseUser):
             if y.beginning <= today <= y.end:
                 current.append(subject)
         return current
+
+    def past_subjects(self):
+        today = date.today()
+        current = []
+        for subject in self.subjects.all():
+            y = subject.year
+            if y.end < today:
+                current.append(subject)
+        return current
+
+    def get_subjects(self):
+        current = []
+        for subject in self.subjects.all():
+                current.append(subject)
+        return current
+
+    def get_degree(self):
+        current = []
+        for degree in self.degree.all():
+                current.append(degree)
+        return current
     
     def current_blocks(self):
         today = date.today()

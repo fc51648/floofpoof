@@ -110,6 +110,13 @@ def friday(request):
 def select_subject_page(request):
     return render(request, 'login/select_subject_page.html')
 
+def select_past_subject_page(request):
+    return render(request, 'login/select_past_subject_page.html')
+
+def my_profile(request):
+    return render(request, 'login/my_profile.html')
+
+
 def subject_page(request,sub_id=None):
     if request.method == "GET":
         subject = Subject.objects.get(id=sub_id)

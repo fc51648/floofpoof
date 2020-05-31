@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Meu perfil</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row text-left">
+            <div class="col-lg-1">
+                {% if user.is_student %}
+                    <a id="link_nav_back" class="text-center btn btn-block btn-outline-dark" href="{% url 'logged-student' %}">Back</a>
+                    {% else %}
+                    <a id="link_nav_back" class="text-center btn btn-block btn-outline-dark" href="{% url 'logged-teacher' %}">Back</a>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+</div>  
+<br> 
+<p>Tipo de utilizador:</p>
+{% if user.is_teacher %}
+<p>Professor</p>
+{% else %}
+<p>Aluno</p>
+{% endif %}
+<p>Nome: {{ user.firstname }} {{ user.surname }}</p>
+<p>Data de nascimento: {{ user.date_of_birth }}</p>
+
+{% if user.is_teacher %}
+<p>Cursos que lecciona:</p>
+{% else %}
+<p>Cursos em que está inscrito:</p>
+{% endif %}
+{% for degree in user.get_degree %}
+<p>{{ degree.name }}</p>
+{% endfor %}
+
+
+{% if user.is_teacher %}
+<p>Cadeiras que lecciona:</p>
+{% else %}
+<p>Cadeiras em que está inscrito:</p>
+{% endif %}
+{% for subject in user.get_subjects %}
+<p>{{ subject.name }}</p>
+{% endfor %}
+
+{% if user.is_student %}
+<p>Minha pontuação média:</p>
+<p>{{ user.getAVGScore }}</p>
+{% endif %}
+
+
+
+{% endblock %}
