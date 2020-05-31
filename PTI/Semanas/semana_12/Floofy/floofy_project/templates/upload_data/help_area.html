@@ -15,25 +15,37 @@
         </div>
 </div>  
 <br> 
-<p>O sistema de upload de dados via ficheiros aceita ficheiros .TXT e .CSV.</p>
-<p>Por cada linha do ficheiro, os parâmetros têm que estar separados por ';' e sem espaços em branco.</p>
-<p>Na área de upload de cada tipo de dados, aparece a lista de parâmetros com esta estrutura:</p>
-<p>Exemplo: Upload de anos letivos</p>
-<p>param1: nome</p>
-<p>param2: data de início</p> 
-<p>param3: data de fim</p>
-<p>Assim, uma linha aceitável seria:</p>
-<p>"2021-2022;2021-09-15;2022-07-15"</p>
-<p>No caso de o parâmetro ser um nome, basta indicar o nome, normalmente, em texto.</p>
-<p>Se o parâmetro é uma data, tem que ter exatamente este formato: ano-mês-dia</p>
-<p>Se o parâmetro é uma lista de algo, por exemplo uma lista de ID's, tem que ter</p>
-<p>este formato: id1-id2-id3, cada elemento separado por "-".</p>
-<br>
-<p>Erros</p>
-<p>No caso de haver um erro, é possível que a estrutura dos ficheiros esteja correta,</p>
-<p>mas que haja algo que não corresponde às regras e à lógica da base de dados.</p>
-<p>Exemplo1: tentar inserir um aluno numa disciplina que não existe.</p>
-<p>Exemplo2: tentar inserir uma cadeira cujo código identificador já corresponde a outra.</p>
-<p>É função do administrador conhecer a lógica da base de dados para evitar estes tipos de erros</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2" id="help_area_container">
+            <p>O sistema de upload de dados via ficheiros aceita ficheiros <b>.TXT</b> e <b>.CSV</b>.</p>
+            <p>Por cada linha do ficheiro, os parâmetros têm que estar separados por <b> ';'</b> e sem espaços em branco.</p>
+            <p>Na área de upload de cada tipo de dados, aparece a lista de parâmetros com esta estrutura:</p>
+            <div>
+                <p class="text-success">Exemplo: Upload de anos letivos</p>
+                <p><b>param1:</b> nome</p>
+                <p><b>param2:</b> data de início</p> 
+                <p><b> param3:</b> data de fim</p>
+            </div>
+
+            <p>Assim, uma linha aceitável seria:</p>
+            <p>"2021-2022;2021-09-15;2022-07-15"</p>
+            <br>
+            <p>No caso de o parâmetro ser um nome, basta indicar o nome, normalmente, em texto.</p>
+            <p>Se o parâmetro é uma data, tem que ter exatamente este formato: ano-mês-dia</p>
+            <p>Se o parâmetro é uma lista de algo, por exemplo uma lista de ID's, tem que ter</p>
+            <p>este formato: id1-id2-id3, cada elemento separado por <b> "-"</b>.</p>
+            <br>
+            <h4 class="text-danger">Erros:</h4>
+            <p>No caso de haver um erro, é possível que a estrutura dos ficheiros esteja correta,</p>
+            <p>mas que haja algo que não corresponde às regras e à lógica da base de dados.</p>
+            <p><b> Exemplo1: </b>tentar inserir um aluno numa disciplina que não existe.</p>
+            <p><b> Exemplo2: </b>tentar inserir uma cadeira cujo código identificador já corresponde a outra.</p>
+            <p>É função do administrador conhecer a lógica da base de dados para evitar estes tipos de erros</p>
+
+        </div>
+    </div>
+</div>
+
  
 {% endblock %}

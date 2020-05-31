@@ -5,7 +5,7 @@
     <div class="row centered">
         <div class="col-lg-10 offset-lg-1">
         <!-- <h1 class="text-center" id="area_student_title">Area de estudante : {{ user.firstname }} {{ user.surname}} <br> -->
-            <h1 class="text-center" id="area_student_title"> Area de tarefas - {{ group.name }} de {{ group.subject}} </h1>
+            <h1 class="text-center" id="area_student_title"> Area de tarefas - {{ group.name }} de {{ group.subject}} </h1><br>
         </div>
     </div>
 </div>
@@ -20,7 +20,7 @@
 <br>
 <div class="container ">
     <div class="row ">
-        <div class="col-lg-4 text-center offset-lg-1" id="list_task_container">
+        <div class="col-lg-4 offset-lg-1 text-center col-md-8 offset-md-2 col-sm-10 offset-sm-1" id="list_task_container">
             <h3>Tarefas agendadas:</h3>
             {% for task in unfinished_tasks %}
                 <div class="list-group" >
@@ -37,7 +37,7 @@
             {% endfor %}
         </div>
 
-<div class="col-lg-3 offset-lg-2" id="create_task_container">
+<div class="col-lg-3 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1" id="create_task_container">
 
 <h2 class="text-center">Criar tarefa</h2>
     <form class="form-group" method="POST" action="{% url 'tasks' subject.id %}" autocomplete="off">
